@@ -28,9 +28,9 @@ class LWind extends LBody {
   }
   
   void Display(){
-    noFill();
-    stroke(0,0,0);
-    rect(x,y,x+w,y+h);
+    //noFill();
+    //stroke(0,0,0);
+    //rect(x,y,x+w,y+h);
   }
   
   boolean IsAffected(Vec2 vecPoint){

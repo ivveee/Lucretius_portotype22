@@ -69,7 +69,7 @@ void setup()
   }
 
   //arBody.get(15).stability = 15000;
-  PImage  imgg = loadImage("ground2.png");
+  PImage  imgg = loadImage("zemlya.png");
   LForm Grounds = new LForm(imgg, color(0, 0, 0));
   for (int i=0;i<Grounds.arBits.length;i++) {
     LGround NewGround = new LGround(Grounds.arBits[i].x, Grounds.arBits[i].y);
@@ -77,11 +77,11 @@ void setup()
   } 
   
   ArrayList <LCloud> Clouds = new ArrayList <LCloud>();
-    PImage  imgCloud = loadImage("cloud2.png");
+    PImage  imgCloud = loadImage("cloud_spiral.png");
   LForm frmCloud = new LForm(imgCloud, color(0, 0, 0));
   for (int i=0;i<frmCloud.arBits.length;i++ ) {
     for(int j=0;j<random(1,5);j++){
-          LCloud cloud = new LCloud(400 + frmCloud.arBits[i].x,10 + frmCloud.arBits[i].y);
+          LCloud cloud = new LCloud(600 + frmCloud.arBits[i].x,10 + frmCloud.arBits[i].y);
           Clouds.add(cloud);
     }
   } 
@@ -122,7 +122,7 @@ void draw() {
 
   }
   arBody.addAll(BodiesToAdd);
-  box2d.step(GTimeStep, 3, 3);
+  box2d.step(GTimeStep, 5, 3);
   GTime=GTime+GTimeStep;
 }
 
@@ -131,13 +131,12 @@ int prevMX=0;
 int prevMY=0;
 void mouseClicked() {
   LWind NewWind = new LWind(40.0f, PI, mouseX - 50, mouseY - 50, 100, 100);
-  for (LBody oBody: arBody) {   
+  /*for (LBody oBody: arBody) {   
     if(oBody instanceof LLeaf || oBody instanceof LCloud)  
       oBody.arBodiesAffect.add(NewWind);
   }
-  prevMX = mouseX;
-  prevMY = mouseY;
-  arBody.add(NewWind);
+  arBody.add(NewWind);*/
+  LWorm oWorm = new LWorm(mouseX,mouseY);
 }
 
 
