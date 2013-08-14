@@ -71,7 +71,7 @@ class LWorm extends LBody{
     void ApplyForce(){
 
       float dS = Parts.get(2).getPosition().y - Parts.get(0).getPosition().y ;
-      if(dS >= 3*iPixDefaultSize && Pull){
+      if(dS >= 4*iPixDefaultSize && Pull){
         dF=-0.02;    Pull = false;
       }
       else if (dS <= 2*iPixDefaultSize && !Pull)
@@ -102,7 +102,7 @@ class LWormPart extends LBasicBody{
     fixtureDef.density = 1.0f;
     fixtureDef.friction = 0f;
     fixtureDef.filter.categoryBits = 0x0002;
-    fixtureDef.filter.maskBits = 0x0004;
+    fixtureDef.filter.maskBits = 0x0006;
 
     bd.fixedRotation = true;
     bd.position.set(box2d.coordPixelsToWorld(pX+iPixDefaultHalfSize,pY+iPixDefaultHalfSize));
