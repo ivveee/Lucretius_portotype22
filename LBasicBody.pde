@@ -9,6 +9,14 @@ class LBasicBody extends LBody{
   
   LGround Rot;
   
+  void Display(){
+    noStroke();
+    fill(color(defaultcolor));
+    Vec2 vecPosition = getPosition();
+    Vec2 vecSize = getSize();
+    rect(vecPosition.x ,vecPosition.y+vecSize.y*(1-rotter/MaxRotter),vecSize.x,vecSize.y);
+}
+  
    void CreateBody(BodyDef bd,FixtureDef fixtureDef,float pX, float pY){
     bd.fixedRotation = true;
     bd.position.set(box2d.coordPixelsToWorld(pX+iPixDefaultHalfSize,pY+iPixDefaultHalfSize));

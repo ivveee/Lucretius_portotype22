@@ -20,21 +20,16 @@ int iScreenWidth = 600;
 int iFrameRate = 40;
 int iPixDefaultSize = 8;
 int iPixDefaultHalfSize = round(iPixDefaultSize/2.f);
-ArrayList<LLeaf> arLeafs = new ArrayList<LLeaf>();
-ArrayList<LWood> arWood = new ArrayList<LWood>();
 LWind oWind = new LWind(20.0f, PI/2, 0, 200, 600, 500);
-LWind oWind2 = new LWind(2.0f, -PI/2, 200, 0, 500, 250);
+LWind oWind2 = new LWind(2.0f, -PI/2, 200, 0, 600, 250);
 
 LEarth oEarth = new LEarth();
 float GTime = 0;
 float GTimeStep = (float)1./float(iFrameRate);
 
-
 color defaultcolor = color(56,75,90);
-ArrayList<LGround> arGround  = new ArrayList<LGround>();
 ArrayList<LBody> arBody = new ArrayList<LBody>();
 
-LGround oGround1;
 void setup() 
 {
   box2d = new PBox2D(this);
@@ -77,7 +72,7 @@ void setup()
   } 
   
   ArrayList <LCloud> Clouds = new ArrayList <LCloud>();
-    PImage  imgCloud = loadImage("cloud_spiral.png");
+    PImage  imgCloud = loadImage("cloud_snake.png");
   LForm frmCloud = new LForm(imgCloud, color(0, 0, 0));
   for (int i=0;i<frmCloud.arBits.length;i++ ) {
     for(int j=0;j<random(1,5);j++){
@@ -98,7 +93,7 @@ void setup()
 }
 
 void draw() {
-  Collections.shuffle(arBody);
+ // Collections.shuffle(arBody);
   background(220, 207, 175);
   ArrayList <LBody> BodiesToAdd = new ArrayList<LBody>();
   for (Iterator<LBody> activeIt = arBody.iterator();activeIt.hasNext();) {
@@ -137,6 +132,7 @@ void mouseClicked() {
   }
   arBody.add(NewWind);*/
   LWorm oWorm = new LWorm(mouseX,mouseY);
+    arBody.add(oWorm);
 }
 
 

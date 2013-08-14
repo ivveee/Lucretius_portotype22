@@ -2,7 +2,7 @@ class LCloudSet extends LBody{
 
 ArrayList <LCloud> Clouds;
 Vec2 SumForce = new Vec2(0,0); 
-float stability = 20;
+float stability = 1;
 float mass;
 
 LCloudSet(ArrayList <LCloud> in_Clouds){
@@ -28,12 +28,13 @@ void ApplyForce(){
   mass++;
     SumForce.set(0,0);
    Vec2 pos = new Vec2(0,0);
+   //float OneByCloudSize = 1.0f/((float)Clouds.size());
    for (Iterator<LCloud> activeIt = Clouds.iterator();activeIt.hasNext();) {
      LCloud Cloud = activeIt.next();
-     Fixture fd = Cloud.PhBody.getFixtureList();
-    if (fd == null) println(Cloud.PhBody.isActive());
-     pos.addLocal(Cloud.getPosition().mul(1.f/Clouds.size()));
+     pos.addLocal(Cloud.getPosition());
     }    
+    pos.mulLocal(1.0f/((float)Clouds.size()));
+    
   for (LBody oLForceBody: arBodiesAffect) {
       Vec2 f = oLForceBody.GetForce(pos); 
       stability -= (sqrt(f.x*f.x + f.y*f.y));

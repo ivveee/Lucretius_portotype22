@@ -4,7 +4,7 @@ class LLeaf extends LBasicBody {
 
   LLeaf(int pX, int pY) {
      MaxRotter = 5.f;
-    rotter = MaxRotter;
+         rotter = MaxRotter;
     BodyDef bd = new BodyDef();
     bd.type = BodyType.DYNAMIC;
     //bd.linearDamping = 0.1f;

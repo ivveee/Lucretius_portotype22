@@ -14,6 +14,8 @@ LWood(int pX, int pY){
     fixtureDef.filter.maskBits = 0x0004;
     CreateBody(bd,fixtureDef,pX,pY);
     PhBody.setUserData(this);
+    if (stability>0)
+            PhBody.setActive(false);
 }
 
 void Display(){
@@ -27,13 +29,6 @@ void Display(){
 
   void ApplyForce() {
       setForcesFromBodiesAffect();
-    /*for (LBody oLForceBody: arBodiesAffect) {
-      Vec2 f = oLForceBody.GetForce(getPosition()); 
-      stability -= (sqrt(f.x*f.x + f.y*f.y));
-      if (stability<0) {
-        PhBody.applyForceToCenter(f);
-      }
-    }*/
   }
   
 }
