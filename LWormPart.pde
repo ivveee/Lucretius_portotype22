@@ -64,7 +64,7 @@ class LWormPart extends LBasicBody{
 
     void ApplyForce()
     {
-           PhBody.applyForceToCenter(new Vec2(0,-1));
+           PhBody.applyForceToCenter(new Vec2(0,-2));
 
       if (BackJoint == null) return;      
       float CurrentJointLength = BackJoint.getLength();
@@ -96,7 +96,7 @@ class LWormPart extends LBasicBody{
       //CircleShape thisSahpe =  (CircleShape) fd.getShape();
       PhBody.destroyFixture(fd);
           FixtureDef fixtureDef = new FixtureDef();
-    fixtureDef.density = 0.1f;
+    fixtureDef.density = 0.5f;
     fixtureDef.friction = 10.f;
     fixtureDef.filter.categoryBits = 0x0002;
     fixtureDef.filter.maskBits = 0x0006;
@@ -115,7 +115,7 @@ class LWormPart extends LBasicBody{
       PhBody.destroyFixture(fd);
           FixtureDef fixtureDef = new FixtureDef();
     fixtureDef.density = 0.1f;
-    fixtureDef.friction = 0.1f;
+    fixtureDef.friction = 0f;
     fixtureDef.filter.categoryBits = 0x0002;
     fixtureDef.filter.maskBits = 0x0006;
         CircleShape cs = new CircleShape();
