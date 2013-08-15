@@ -46,7 +46,9 @@ class LWorm extends LBody{
       Parts.add(newPart);
     }
     
+
       arBody.addAll(Parts);
+      
     for(int i =0;i< (Parts.size() - 1);i++){
       LWormPart Part1 = Parts.get(i);
       LWormPart Part2 = Parts.get(i+1);
@@ -58,18 +60,29 @@ class LWorm extends LBody{
     djd.length = box2d.scalarPixelsToWorld(SizeY*2);
     
     // These properties affect how springy the joint is 
-    djd.frequencyHz = 5;  // Try a value less than 5 (0 for no elasticity)
-    djd.dampingRatio = 1; // Ranges between 0 and 1
+    djd.frequencyHz = 30;  // Try a value less than 5 (0 for no elasticity)
+    djd.dampingRatio = 0.5; // Ranges between 0 and 1
     djd.collideConnected = false;
     
     DistanceJoint dj = (DistanceJoint) box2d.world.createJoint(djd);
+    Part1.BackJoint = dj;
     Joints.add(dj);
     }
+    
+    for(int i =1;i< Parts.size();i++){
+          Parts.get(i).setUnStable();
+      //newPart.setUnStable();
+    }
+    Parts.get(Parts.size()-1).Head = Parts.get(0);
+    Parts.get(0).setStable();
+
+    
+    
   }
   
   
     void ApplyForce(){
-
+/*
       float dS = Parts.get(2).getPosition().y - Parts.get(0).getPosition().y ;
       if(dS >= 4*iPixDefaultSize && Pull){
         dF=-0.02;    Pull = false;
@@ -81,52 +94,10 @@ class LWorm extends LBody{
               for(int i =0;i<Joints.size();i++){
           Joints.get(i).setLength(Joints.get(i).getLength()+ dF); 
         }   
-        
     Parts.get(0).PhBody.applyForceToCenter(new Vec2(0,0.5));
-    
-    
+    */    
+
     }
     
 }
 
-
-
-class LWormPart extends LBasicBody{
-    LWormPart(int pX, int pY) {
-     MaxRotter = 5.f;
-    rotter = MaxRotter;
-    BodyDef bd = new BodyDef();
-    bd.type = BodyType.DYNAMIC;
-    //bd.linearDamping = 0.1f;
-    FixtureDef fixtureDef = new FixtureDef();
-    fixtureDef.density = 1.0f;
-    fixtureDef.friction = 0f;
-    fixtureDef.filter.categoryBits = 0x0002;
-    fixtureDef.filter.maskBits = 0x0006;
-
-    bd.fixedRotation = true;
-    bd.position.set(box2d.coordPixelsToWorld(pX+iPixDefaultHalfSize,pY+iPixDefaultHalfSize));
-    PhBody = box2d.createBody(bd);
-    PolygonShape PhShape = new PolygonShape();
-    float bW = box2d.scalarPixelsToWorld(iPixDefaultHalfSize-1);
-    float bH = box2d.scalarPixelsToWorld(iPixDefaultHalfSize-1);
-    PhShape.setAsBox(bW, bH);
-    fixtureDef.shape = PhShape;
-    MassData md = new MassData();
-    md.mass = 1;
-    md.center.setZero();
-    PhBody.createFixture(fixtureDef);
-    PhBody.setMassData(md);
-    PhBody.setUserData(this);
-  }
-  
-    void Display(){
-    noStroke();
-    fill(color(defaultcolor));
-    Vec2 vecPosition = getPosition();
-    Vec2 vecSize = getSize();
-    rect(vecPosition.x-1 ,vecPosition.y-1,vecSize.x+2,vecSize.y+2);
-}
-
-  
-}

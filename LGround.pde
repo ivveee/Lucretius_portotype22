@@ -3,7 +3,7 @@ class LGround extends LBasicBody {
   float finY = iScreenHeight;
   int rotterMass = 0;
   int rotterMassMax = 3;
-  Vec2 pusher = new Vec2(0,-0.5);
+  Vec2 pusher = new Vec2(0,-1);
      // Vec2 SumVelocity = new Vec2();;
   
   LGround(float pX, float pY) {       
@@ -51,20 +51,23 @@ class LGround extends LBasicBody {
     
     Vec2 currentPusher = new Vec2(0,0);
     
+    /*if(callback.Grounds.size() == 0){
+            currentPusher = new Vec2(0, 0);
+    }*/
     for (int i=0;i<callback.Grounds.size();i++) {
       LGround PushingGround = callback.Grounds.get(i);
       if (PushingGround!=this && PushingGround.getPosition().y <= getPosition().y 
                                                           && PushingGround.PhBody.getLinearVelocity().y == 0){
-        SumVelocity.addLocal(pusher);
+        //SumVelocity.addLocal(pusher);
         currentPusher = pusher;
-        finY = PushingGround.getPosition().y + PushingGround.getSize().y;
+        //finY = PushingGround.getPosition().y + PushingGround.getSize().y;
         break;
       }
     }
-    if (getPosition().y > finY && PhBody.getLinearVelocity().y != 0) {
+    /*if (getPosition().y > finY && PhBody.getLinearVelocity().y != 0) {
       currentPusher = new Vec2(0, 0);
       setPosition(new Vec2(getPosition().x,finY));
-    }
+    }*/
     SumVelocity.addLocal(currentPusher);
     PhBody.setLinearVelocity(SumVelocity);
   }

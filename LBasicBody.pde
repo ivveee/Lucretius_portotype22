@@ -35,7 +35,6 @@ class LBasicBody extends LBody{
   
   Vec2 getPosition() {
         Fixture fd = PhBody.getFixtureList();
-    if (fd == null) println(this.getClass());
     
     Vec2 g = box2d.coordWorldToPixels(PhBody.getPosition());
     Vec2 ret = g.sub(getSize().mul(0.5));

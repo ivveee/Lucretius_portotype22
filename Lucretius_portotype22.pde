@@ -47,7 +47,7 @@ void setup()
   for (int i=0;i<TreeLeaves.arBits.length;i++ ) {
     LLeaf Leaf = new LLeaf(TreeLeaves.arBits[i].x, TreeLeaves.arBits[i].y);
     arBody.add(Leaf);
-    Leaf.stability = randomGaussian()*3000+8000;//random(500,4000);
+    Leaf.stability = randomGaussian()*3000+80000;//random(500,4000);
     Leaf.arBodiesAffect.add(oWind);
     Leaf.arBodiesAffect.add(oEarth);
   }
