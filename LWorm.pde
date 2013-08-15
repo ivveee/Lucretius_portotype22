@@ -60,8 +60,8 @@ class LWorm extends LBody{
     djd.length = box2d.scalarPixelsToWorld(SizeY*2);
     
     // These properties affect how springy the joint is 
-    djd.frequencyHz = 30;  // Try a value less than 5 (0 for no elasticity)
-    djd.dampingRatio = 0.5; // Ranges between 0 and 1
+    djd.frequencyHz = 50;  // Try a value less than 5 (0 for no elasticity)
+    djd.dampingRatio = 2; // Ranges between 0 and 1
     djd.collideConnected = false;
     
     DistanceJoint dj = (DistanceJoint) box2d.world.createJoint(djd);
