@@ -1,6 +1,6 @@
 class LWorm extends LBody{
   
-  int WormLength = 5;
+  int WormLength = 9;
         float dF = 0;
   boolean Pull = true;
   

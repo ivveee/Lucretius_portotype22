@@ -72,14 +72,14 @@ class LWormPart extends LBasicBody{
       
       if(stable && !wp.stable){
         if(box2d.scalarWorldToPixels(CurrentJointLength) >= getSize().x * 2)
-          BackJoint.setLength(CurrentJointLength - 0.05);
+          BackJoint.setLength(CurrentJointLength - 0.08);
         else {
           wp.setStable();
         }
       }
       if(!stable && wp.stable){
-         if(box2d.scalarWorldToPixels(CurrentJointLength) <= getSize().x * 5)
-          BackJoint.setLength(CurrentJointLength + 0.05);
+         if(box2d.scalarWorldToPixels(CurrentJointLength) <= getSize().x * 2.5)
+          BackJoint.setLength(CurrentJointLength + 0.08);
         else {
           setStable();
           wp.setUnStable();
@@ -87,7 +87,6 @@ class LWormPart extends LBasicBody{
     }
     
 
-    
     
     }
     
