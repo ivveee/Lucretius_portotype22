@@ -64,7 +64,7 @@ class LWormPart extends LBasicBody{
 
     void ApplyForce()
     {
-           PhBody.applyForceToCenter(new Vec2(0,-2));
+           PhBody.applyForceToCenter(new Vec2(0,-3));
 
       if (BackJoint == null) return;      
       float CurrentJointLength = BackJoint.getLength();
@@ -72,14 +72,14 @@ class LWormPart extends LBasicBody{
       
       if(stable && !wp.stable){
         if(box2d.scalarWorldToPixels(CurrentJointLength) >= getSize().x * 2)
-          BackJoint.setLength(CurrentJointLength - 0.08);
+          BackJoint.setLength(CurrentJointLength - 0.1);
         else {
           wp.setStable();
         }
       }
       if(!stable && wp.stable){
          if(box2d.scalarWorldToPixels(CurrentJointLength) <= getSize().x * 2.5)
-          BackJoint.setLength(CurrentJointLength + 0.08);
+          BackJoint.setLength(CurrentJointLength + 0.1);
         else {
           setStable();
           wp.setUnStable();
