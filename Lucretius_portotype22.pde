@@ -114,8 +114,11 @@ void draw() {
         activeIt.remove();
       }
     }
-
   }
+  Iterator<LBody> activeIt = arBody.iterator();
+    while (activeIt.hasNext()) {activeIt.next();}
+    activeIt = null;
+println(activeIt);  
   arBody.addAll(BodiesToAdd);
   box2d.step(GTimeStep, 5, 3);
   GTime=GTime+GTimeStep;
