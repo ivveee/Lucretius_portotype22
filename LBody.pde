@@ -10,6 +10,8 @@ class LBody{
   Vec2 GetImpulse(Vec2 input){return null;}
   
   void Display(){};
+  
+  void destroy(){};
 }
 
 

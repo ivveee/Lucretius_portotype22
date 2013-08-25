@@ -110,8 +110,8 @@ void draw() {
           BodiesToAdd.add(NewGround);
           Rotter.rotterMass = 0;
         }
+        oBody.destroy();
         activeIt.remove();
-        box2d.destroyBody(BasicBody.PhBody);
       }
     }
 

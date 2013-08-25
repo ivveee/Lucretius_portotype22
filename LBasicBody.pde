@@ -84,8 +84,9 @@ class LBasicBody extends LBody{
       ce = ce.next;
     }        
   }
-  
-  
+    void destroy() {
+      box2d.destroyBody(PhBody);
+    }
   
   
 }
